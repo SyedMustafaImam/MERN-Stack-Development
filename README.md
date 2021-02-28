@@ -6,10 +6,7 @@ These are all the projects made by me during the course of WEB Development using
 
 It is avalible on the branch `asssignment1`. 
 <br>
-<a href="http://www.syedmustafa.ml/" target="_blank">syedmustafa.ml</a>
-
 Avaliable at: <a href="http://www.syedmustafa.ml/" target="_blank">www.syedmustafa.ml</a>
-[syedmustafa.ml](http://www.syedmustafa.ml/){:target="_blank"}
 <hr>
    
 # Practice Projects
