@@ -1,0 +1,16 @@
+.bg-primary {
+    background: blue;
+    font-variant: uppercase;
+}
+
+.myText {
+    font-size: 12px;
+    font-family: verdana;
+    font-kerning: 10px;
+    color: blueviolet;
+    font-variant-caps: titling-caps;
+}
+
+.container {
+    background-color: antiquewhite;
+}

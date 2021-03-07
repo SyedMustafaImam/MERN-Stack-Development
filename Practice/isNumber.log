@@ -1,0 +1,19 @@
+typeof 2
+"number"
+function is_integer (num){
+    if (typeof num == "number"){
+        console.log(num+" is a Ineger value");
+            if(num > 0){
+                console.log(num + "It is a Postive Integer");
+            } else if (num < 0){
+                    console.log(num + "It is a Negative Integer");
+        }
+    }
+
+    else {
+        console.log("It is not of an Integer");
+}
+
+
+} 
+undefined

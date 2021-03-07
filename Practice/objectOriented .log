@@ -1,0 +1,123 @@
+var person = {first:"Syed",last:"Mustafa", full_name : function () return this.first + " " +this.last };
+VM4227:1 Uncaught SyntaxError: Unexpected token 'return'
+var person = {first:"Syed",last:"Mustafa", full_name : function () {return this.first + " " +this.last;} };
+undefined
+person.full_name
+ƒ () {return this.first + " " +this.last;}
+person.full_name();
+"Syed Mustafa"
+person.first;
+"Syed"
+var person = {first:"Syed",last:"Mustafa", full_name : this.first + " " +this.last};
+undefined
+person.full_name;
+"undefined undefined"
+var person = {first:"Syed",last:"Mustafa", full_name : function () {return first + " " +this.last;} };
+undefined
+person.first;
+"Syed"
+var person = {first:"Syed",last:"Mustafa", full_name : function () {return first + " " + last;} };
+undefined
+person.last;
+"Mustafa"
+function Circle(r){
+this.radius = r;
+}
+undefined
+function Circle(r){
+this.radius = r;
+area = Math.PI * Math.pow(this.radius, 2);
+}
+undefined
+var area = new Circle(5.2);
+undefined
+area.area();
+VM4686:1 Uncaught TypeError: area.area is not a function
+    at <anonymous>:1:6
+(anonymous) @ VM4686:1
+area
+Circle {radius: 5.2}
+function Circle(r){
+this.radius = r;
+return area = Math.PI * Math.pow(this.radius, 2);
+}
+undefined
+var area = new Circle(5.2);
+undefined
+area.area();
+VM4822:1 Uncaught TypeError: area.area is not a function
+    at <anonymous>:1:6
+(anonymous) @ VM4822:1
+function Circle(r){
+this.radius = r;
+this.area = function (){ return Math.PI * Math.pow(this.radius, 2);}
+}
+undefined
+var area = new Circle(5.2);
+undefined
+area.area();
+84.94866535306801
+function Circle(r){
+this.radius = r;area = function (){ return Math.PI * Math.pow(this.radius, 2);}
+}
+undefined
+function Circle(r){
+this.radius = r;
+area = function (){ return Math.PI * Math.pow(this.radius, 2);}
+}
+undefined
+var area = new Circle(5.2);
+undefined
+area.area();
+VM4938:1 Uncaught TypeError: area.area is not a function
+    at <anonymous>:1:6
+(anonymous) @ VM4938:1
+function Circle(r){
+this.radius = r;
+this.area = function (){ return Math.PI * Math.pow(this.radius, 2);}
+}
+undefined
+var area = new Circle(5.2);
+undefined
+area.area();
+84.94866535306801
+Number.prototype.isEvenNumber = function (num){return num%2==2; }
+ƒ (num){return num%2==2; }
+var n = new Number(6);
+undefined
+n.isEvenNumber();
+false
+Number.prototype.isEvenNumber = function (num){if (num%2==2) {console.log("This is even number ");} else {console.log("Not is even Number");} }
+ƒ (num){if (num%2==2) {console.log("This is even number ");} else {console.log("Not is even Number");} }
+n.isEvenNumber();
+entry-main-modern-vendor.5b1adfb025cacc11852a.js:1 Not is even Number
+undefined
+var n = new Number(6);
+undefined
+n.isEvenNumber();
+entry-main-modern-vendor.5b1adfb025cacc11852a.js:1 Not is even Number
+undefined
+Number.prototype.isEvenNumber = function (num){if (num%2==0) {console.log("This is even number ");} else {console.log("Not is even Number");} }
+ƒ (num){if (num%2==0) {console.log("This is even number ");} else {console.log("Not is even Number");} }
+n.isEvenNumber();
+entry-main-modern-vendor.5b1adfb025cacc11852a.js:1 Not is even Number
+undefined
+var n = new Number(5);
+undefined
+n.isEvenNumber();
+entry-main-modern-vendor.5b1adfb025cacc11852a.js:1 Not is even Number
+undefined
+Number.prototype.isEvenNumber = function (num){return num%2==0; }
+
+ƒ (num){return num%2==0; }
+var n = new Number(6);
+undefined
+n.isEvenNumber();
+false
+Number.prototype.isEvenNumber = function (arguments){return arguments%2==0; }
+
+ƒ (arguments){return arguments%2==0; }
+var n = new Number(6);
+undefined
+n.isEvenNumber();
+false

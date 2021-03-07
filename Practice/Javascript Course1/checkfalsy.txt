@@ -1,0 +1,9 @@
+function check(z) {
+if(z){
+console.log("Truthy value Passed");
+
+}else
+{
+console.log('Falsy value passed');
+}
+}

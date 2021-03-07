@@ -1,0 +1,32 @@
+.jumbotron {
+    width: 80%;
+    /* height: 500px; */
+    border-radius: 5px;
+    background-color: #B9B4E8;
+    box-shadow: 20px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin: auto; */
+}
+
+.jb_title {
+    color: #1A1C4B;
+    padding-top: 50px;
+    font-weight: bold;
+    font-size: 30px
+}
+
+.jb_hero {
+    color: #1A1C4B
+}
+
+.jb_para {
+    color: #272972
+}
+
+.row {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
