@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const item = require('./models/items.js');
 const mongoose = require('mongoose');
-const mongodb = 'mongodb+srv://mustafa_list:mustafa123@clustertodo.f1yfn.mongodb.net/item-database?retryWrites=true&w=majority'
+const mongodb = 'mongodb+srv://mustafa_list:mustafa123@clustertodo.f1yfn.mongodb.net/item-database?retryWrites=true&w=majority';
 
 // Package for dymanic html
 app.set('view engine', 'ejs');
@@ -14,7 +14,7 @@ mongoose.connect(mongodb, { useUnifiedTopology: true, useNewUrlParser: true }).t
 }).catch(err => console.log(err));
 
 
-
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('src'));
 
@@ -38,12 +38,21 @@ app.get('/get-items', (req, res) => {
     }).catch(err => console.log(err));
 })
 
+// Select * from the DB (Like its showing the all the data of the specific field)
 
 app.get('/add-item', (req, res) => {
     // res.sendFile('./pages/add-item.html', { root: __dirname });
     res.render('add-item')
 });
 
+
+app.post('/items', (req, res) => {
+    console.log(req.body);
+    const Item = item(req.body);
+    Item.save().then(() => {
+        res.redirect('/get-items')
+    }).catch(err => console.log(err))
+})
 
 
 // Just for learing
