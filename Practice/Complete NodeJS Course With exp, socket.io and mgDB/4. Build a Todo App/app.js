@@ -54,6 +54,23 @@ app.post('/items', (req, res) => {
     }).catch(err => console.log(err))
 })
 
+// details of each item
+app.get('/items/:id', (req, res) => {
+    const id = req.params.id;
+    item.findById(id).then(result => {
+        console.log(result)
+        res.render('item-detail', { item: result })
+    })
+});
+
+// deleting each item
+app.delete('/items/:id', (req, res) => {
+    const id = req.params.id;
+    item.findByIdAndDelete(id).then(result => {
+        console.log(`deleted Item=  ${result}`)
+        res.json({redirect:'/'})
+    })
+});
 
 // Just for learing
 
