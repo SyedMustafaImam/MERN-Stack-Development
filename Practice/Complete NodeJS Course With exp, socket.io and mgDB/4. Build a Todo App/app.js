@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = 5050;
 const item = require('./models/items.js');
 const mongoose = require('mongoose');
 const mongodb = 'mongodb+srv://mustafa_list:mustafa123@clustertodo.f1yfn.mongodb.net/item-database?retryWrites=true&w=majority';
@@ -10,7 +11,7 @@ app.set('view engine', 'ejs');
 // connecting to mongo db
 mongoose.connect(mongodb, { useUnifiedTopology: true, useNewUrlParser: true }).then(() => {
     console.log("Connected")
-    app.listen(9090, () => { console.log('Listing at port 9090') });
+    app.listen(port, () => { console.log(`Listing at port ${port}`) });
 }).catch(err => console.log(err));
 
 
@@ -72,6 +73,13 @@ app.delete('/items/:id', (req, res) => {
     })
 });
 
+app.put('/items/:id', (req,res)=>{
+    const id = req.params.id;
+    item.findByIdAndUpdate(id, req.body).then(result=>{
+        console.log(`Updated Item = ${result}`);
+        res.json({msg: 'updated successfully'})
+    })
+})
 // Just for learing
 
 // // Saving Items to the mongo db DataBase
