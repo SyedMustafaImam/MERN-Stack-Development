@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 5050;
+const port = process.env.PORT || 5050;
 const item = require('./models/items.js');
 const mongoose = require('mongoose');
 const mongodb = 'mongodb+srv://mustafa_list:mustafa123@clustertodo.f1yfn.mongodb.net/item-database?retryWrites=true&w=majority';
