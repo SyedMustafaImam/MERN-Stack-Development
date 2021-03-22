@@ -80,7 +80,7 @@ mouseleave:function () {
 })
 
 // $('#about').hide(1000, function () {console.log('hidden');})
-$('#about').hide()
+// $('#about').hide()
 
 
 $('#showAbout').click(function () {
@@ -92,6 +92,57 @@ $('#showAbout').click(function () {
 // fadeTo()
 
 
+$('#about').slideToggle(1000)
+// slide.up
+// slide.down
 
+
+// animate in jquery
+$('#oth').animate({
+    opacity:0.3,
+    
+}, 2000);
+
+
+// toGet text from div
+$('#about').text()
+
+// getting value from the form
+
+$('#fsub').on('click', function () {
+
+    let text = $('textarea').val();
+    console.log(text)
+    $('textarea').val(function(){
+        $('textarea').empty();
+    })
+    })
+
+    // remove will delete the element form the document
+  
+    // to add a class
+
+    $('#oth').addClass('myClass')
+
+
+// // to remove a class
+
+$('#oth').removeClass('myClass')
+
+// // toggle class
+$('#oth').toggleClass('myClass2')
+
+// CSS
+$('#oth').css('color','red')
+
+// AJAX Get request
+// $.get('https://code.jquery.com/jquery-1.12.4.min.js', function(data, status){alert(data);
+// alert(status)});
+
+// $.post('https://code.jquery.com/jquery-1.12.4.min.js',
+// {name:"mustafa", reg:"1812134"},
+// function(data,status){
+//     alert(status)
+// });
+    
 })
-
