@@ -1,0 +1,11 @@
+To use Express Generator 
+
+
+Express generator helps us to create MVC frame work. 
+
+$ express webapp1 --view=ejs
+
+$ npm install
+
+copy and run the command to run the project 
+
