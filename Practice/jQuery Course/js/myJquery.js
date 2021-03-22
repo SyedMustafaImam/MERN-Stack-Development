@@ -39,5 +39,59 @@ $(document).ready(function () {
 
     // $('p:first').click();
 
+    // Events in jQuery
+    // mouse events = click, dblclick, mouseenter, mouseleave
+    // KeyboardEvent = keypress, keydown, keyup
+    // form events = submit, change, foucs, blur
+    // doucment/ window events = load, resize, scroll, unload
+
+// // double click 
+// $('p').dblclick(function () {
+//     console.log('you have double clicked on p', this);
+
+// })
+
+
+// // Mouse enter 
+// $('p').mouseenter(function () {
+//     console.log('you have entered in p', this);
+
+// })
+
+// // Mouse leave 
+// $('p').mouseleave(function () {
+//     console.log('you have leaved p', this);
+
+// })
+// // Mouse Hover 
+// $('p').hover(function () {
+//     console.log('you have hovered p', this);
+// }, function () {console.log('you have leaved hover')})
+
+
+// demoing the on method
+$('p').on({
+    click: function () {
+    console.log('thank for clicking', this)
+},
+mouseleave:function () {
+    console.log('leaving ', this)
+}
+})
+
+// $('#about').hide(1000, function () {console.log('hidden');})
+$('#about').hide()
+
+
+$('#showAbout').click(function () {
+    $('#about').fadeToggle(1000)
+})
+
+// fadeIn()
+// fadeOut()
+// fadeTo()
+
+
 
 })
+
