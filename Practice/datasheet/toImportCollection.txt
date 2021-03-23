@@ -1,0 +1,3 @@
+mongoimport -d academic -c course --file courses.json --jsonArray
+
+mongoimport -d database -c collection --file filename/location --fileType
