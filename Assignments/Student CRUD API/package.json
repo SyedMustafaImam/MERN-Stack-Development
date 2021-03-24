@@ -1,19 +1,22 @@
 {
   "name": "student-crud-api",
-  "version": "1.1.1",
-  "description": "assignment by sir adeel, in which we have to make the student crud api",
+  "version": "1.0.0",
+  "description": "This is a assignement by our teacher in which we have to make a curd api",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
   "keywords": [
+    "nodejs",
     "CRUD",
-    "API"
+    "API",
+    "mongodb"
   ],
   "author": "Syed Mustafa Imam",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "joi": "^17.4.0",
     "mongoose": "^5.12.2"

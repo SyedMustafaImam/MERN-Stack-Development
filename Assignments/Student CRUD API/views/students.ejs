@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+
+<body>
+    <header>
+        <%- include( './partials/nav.ejs') %>
+
+    </header>
+    <main>
+        <!-- <h1><%=title%></h1> -->
+
+        <div class="row container">
+            
+            <table>
+                <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Reg. Number</th>
+                      <th>Semester</th>
+                      <th>Section</th>
+
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <tr>
+                    <td><%=students.name%></td>
+                    <td><%=students.reg%></td>
+                    <td><%=students.semester%></td>
+                    <td><%=students.section%></td>
+                    
+                    
+                  </tr>
+                  <tr>
+                              
+                </tbody>
+              </table>
+
+        </div>
+    </main>
+    <footer>
+
+        <%- include( './partials/footer.ejs') %>
+
+    </footer>
+
+
+</body>
+
+</html>
