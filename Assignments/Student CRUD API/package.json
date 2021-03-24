@@ -1,0 +1,21 @@
+{
+  "name": "student-crud-api",
+  "version": "1.1.1",
+  "description": "assignment by sir adeel, in which we have to make the student crud api",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "CRUD",
+    "API"
+  ],
+  "author": "Syed Mustafa Imam",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "mongoose": "^5.12.2"
+  }
+}
