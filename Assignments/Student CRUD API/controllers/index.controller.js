@@ -9,3 +9,11 @@ res.render('index', {
 })
     
 }
+ 
+exports.error = (req,res) => {
+  
+    res.render('error', {
+        title:"Error"
+    })
+        
+    }

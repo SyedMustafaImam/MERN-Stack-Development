@@ -1,6 +1,5 @@
 
-<div class="row container">
-            
+<div class="row container">            
     <table class=tab> 
         <thead>
           <tr>
@@ -13,16 +12,21 @@
         </thead>
 
         <tbody>
+          <%  if(students.length>0){ %>
+          <% students.forEach(function (student) {  %>        
+
           <tr>
-            <td><a href="#" class='button' reg-no='<%=students.reg%>'><%=students.name%></a></td>
-            <td><%=students.reg%></td>
-            <td><%=students.semester%></td>
-            <td><%=students.section%></td>
-            
-            
+
+            <td><a href="#" class='title' reg-no='<%=student._id%>'><%=student.name%></a></td>
+            <td ><%=student.reg%></td>
+            <td><%=student.semester%></td>
+            <td><%=student.section%></td>          
+
           </tr>
-          <tr>
-                      
+          <% })} else{ console.log('Error')} %>                   
+
+          <!-- <%  %>                    -->
+
         </tbody>
       </table>
     </div> 

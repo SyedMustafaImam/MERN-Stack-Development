@@ -8,14 +8,14 @@
     
 loadData()
     
-    $('.button').on('click', function () {
+    $('.title').on('click', function () {
       $('.tab').hide();
       $('#edit').show();
     })
 
-    $('body').on('click', '.button', function () {
-      let reg_no = $('.button').attr('reg-no');
-      // console.log(reg_no)
+    $('body').on('click', '.title', function () {
+      let reg_no = $(this).attr('reg-no');
+      console.log('regno >>',reg_no)
       $('.regno').val(reg_no);
       $('#list').hide()
       $.ajax({
@@ -34,8 +34,11 @@ loadData()
 
 
     $('body').on('click', '#save', function () {
+      
+      console.log('from the ejs: ',$("#objid").attr('objid'))
 
       let updated_values = {
+        id : $("#objid").attr('objid'),
         reg: $('.regno').val(),
         name: $('#first_name').val(),
         section: $('#section').val(),
@@ -48,6 +51,7 @@ loadData()
         url: '/students/save',
         method: 'POST',
         data: {
+          id : $("#objid").attr('objid'),
           reg: $('.regno').val(),
           name: $('#first_name').val(),
           section: $('#section').val(),
@@ -68,6 +72,10 @@ loadData()
       })
     })
 
+    $('body').on('click', '#back', function () {
+      $('#list').show();
+      $('#edit').show();
+    })
 
 
   })

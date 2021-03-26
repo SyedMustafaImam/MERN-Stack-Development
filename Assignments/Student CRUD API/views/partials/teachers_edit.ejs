@@ -1,0 +1,56 @@
+
+            
+            <div class="row" style="margin-top: 50px;">
+                <form class="col s12" action="/save" method="post">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input disabled value="<%=studata.reg%>" id="disabled" type="text" class="validate regno">
+                      <label class="active" id="objid" objid=<%=studata._id%> =for="name">Registration Number</label>
+                    </div>
+
+                      <div class="input-field col s6">
+                        <input placeholder="Name" value="<%=studata.name%>" id="first_name" type="text" class="validate">
+                        <label class="active" for="name">Student Name</label>               
+                    </div>
+                  </div>
+
+                  <div class="row">
+
+                    <div class="input-field col s6">
+                        <input id="section" type="text" class="validate" value="<%=studata.section%>">
+                        <label class="active"  for="Section">Section</label>
+  
+                      </div>
+
+                    <div class="input-field col s6">
+                      <input id="semester" type="number" class="validate" value="<%=studata.semester%>">
+                      <label class="active" for="semester">Semester</label>
+
+                    </div>
+                  </div>
+                
+                  
+
+                  <div class="row" style="align-items: center;">
+                    <div class="col s4">
+                      <button class='frm_btn btn' id="save" type="button" value="Save">Submit Form <i class="material-icons right">send</i></button>
+                    </div>
+                    
+
+                    <div class="col s4">
+                    <button class='btn btn-danger' id="delete" type="button" ">Delete Student<i class="material-icons right">delete_forever</i></button>
+                  </div>
+      
+                  <div class="col s4">
+                    <button class='btn btn-danger' id="back" type="button" ">Close<i class="material-icons right">close</i></button>
+                  </div>
+      </div> 
+                
+                
+              </form>
+              <br>
+            
+</div>
+
+
+              

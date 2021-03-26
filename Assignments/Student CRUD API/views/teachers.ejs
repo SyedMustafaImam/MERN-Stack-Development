@@ -2,52 +2,151 @@
 <html lang="en">
 
 <%- include('./partials/head.ejs') %>
+<script type="text/javascript">
+  $(document).ready(function () {
+
+
+    loadData()
+
+    $('.title').on('click', function () {
+      $('.tab').hide();
+      $('#edit').show();
+    })
+
+    $('body').on('click', '.title', function () {
+      let reg_no = $(this).attr('reg-no');
+      console.log('regno >>', reg_no)
+      $('.regno').val(reg_no);
+      $('#list').hide()
+      $.ajax({
+        url: '/teachers/edit',
+        method: 'GET',
+        data: {
+          'regid': reg_no
+        }
+      }).then(function (res) {
+        M.updateTextFields();
+
+        $('#edit').html(res);
+      })
+
+    })
+
+
+    $('body').on('click', '#save', function () {
+
+
+      let updated_values = {
+        id: $("#objid").attr('objid'),
+        reg: $('.regno').val(),
+        name: $('#first_name').val(),
+        section: $('#section').val(),
+        semester: $('#semester').val()
+      }
+      // console.log(updated_values)
+
+
+      $.ajax({
+        url: '/teachers/save',
+        method: 'POST',
+        data: {
+          id: $("#objid").attr('objid'),
+          reg: $('.regno').val(),
+          name: $('#first_name').val(),
+          section: $('#section').val(),
+          semester: $('#semester').val()
+        },
+
+      }).then(function () {
+        $.ajax({
+          url: '/teachers/list',
+        }).then(function (rest) {
+          $('#list').html(rest)
+          $('#list').show();
+          $('form').html("");
+        })
+
+
+      })
+    })
+
+    $('body').on('click', '#back', function () {
+      $('#list').show();
+      $('#edit').show();
+    })
+
+    $('body').on('click', '#delete', function () {
+      console.log('from the Delete ejs: ', $("#objid").attr('objid'))
+
+      $.ajax({
+        url: '/teachers/delete',
+        method: 'DELETE',
+        data: {
+          id: $("#objid").attr('objid')
+        }
+
+      }).then(function () {
+        $.ajax({
+          url: '/teachers/list',
+        }).then(function (rest) {
+          $('#list').html(rest)
+          $('#list').show();
+          $('form').html("");
+        })
+
+
+      })
+
+
+     
+
+      })
+    })
+
+
+
+
+  function loadData() {
+
+    $.ajax({
+      url: '/teachers/list',
+    }).then(function (rest) {
+      $('#list').html(rest)
+      $('form').html("");
+    })
+
+
+  }
+</script>
 
 
 <body>
-    <header>
-        <%- include( './partials/nav.ejs') %>
+  <header>
+    <%- include( './partials/nav.ejs') %>
 
-    </header>
-    <main>
-        <!-- <h1><%=title%></h1> -->
+  </header>
+  <main>
+    <!-- <h1><%=title%></h1> -->
 
-        <div class="row container">
-            
-            <table>
-                <thead>
-                  <tr>
-                      <th>Name</th>
-                      <th>Reg. Number</th>
-                      <th>Semester</th>
-                      <th>Section</th>
+    <div id="list">
 
-                  </tr>
-                </thead>
-        
-                <tbody>
-                  <tr>
-                    <td><%=students.name%></td>
-                    <td><%=students.reg%></td>
-                    <td><%=students.semester%></td>
-                    <td><%=students.section%></td>
-                    
-                    
-                  </tr>
-                  <tr>
-                              
-                </tbody>
-              </table>
+    </div>
 
-        </div>
-    </main>
-    <footer>
+    <!-- Modal Structure -->
 
-        <%- include( './partials/footer.ejs') %>
+    <div id="edit" class="container">
 
-    </footer>
+    </div>
 
+  </main>
+  <footer>
+
+    <%- include( './partials/footer.ejs') %>
+
+  </footer>
 
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </html>

@@ -7,7 +7,7 @@ exports.student = (req, res) => {
         // console.log(JSON.stringify(result[0]))
         res.render('students', {
             title: "STUDENT",
-            students: result[0]
+            students: result
         })
     })
 }
@@ -18,7 +18,7 @@ exports.listStudent = (req, res) => {
         // console.log(JSON.stringify(result[0]))
         res.render('partials/list', {
             title: "STUDENT",
-            students: result[0]
+            students: result
         })
     })
 }
@@ -26,30 +26,28 @@ exports.listStudent = (req, res) => {
 
 exports.editStudent = (req, res) => {
 
-    // console.log('Reg id :>> ', req.query.regid);
+    console.log('Reg id :>> ', req.query.regid);
 
-    db.Students.find({
-        reg: req.query.regid
-    }).then(result => {
-        // console.log(result[0].name)
+    db.Students.findById(req.query.regid).then(result => {
+        // console.log(result)
         res.render('partials/edit', {
             title: "EDIT STUDENT DETAILS",
-            studata: result[0]
+            studata: result
         })
     })
 }
 
 
 exports.saveStudent = async function (req, res) {
-
-    let result = await db.Students.findOneAndUpdate({
-        reg: req.body.reg
-    }, {
+// console.log('req.body.id :>> ', req.body.id);
+    let result = await db.Students.findByIdAndUpdate(
+        req.body.id
+    , {
         $set: req.body
     })
     res.send(result)
     res.end();
-    // console.log(result)
+    // // console.log(result)
 }
 
 // console.log(req)

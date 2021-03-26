@@ -5,7 +5,7 @@
                   <div class="row">
                     <div class="input-field col s6">
                       <input disabled value="<%=studata.reg%>" id="disabled" type="text" class="validate regno">
-                      <label class="active" for="name">Registration Number</label>
+                      <label class="active" id="objid" objid=<%=studata._id%> =for="name">Registration Number</label>
                     </div>
 
                       <div class="input-field col s6">
@@ -31,7 +31,9 @@
                   
                   <div class="row">
                   </div>
-                <button class='frm_btn btn' id="save" type="button" value="Save">Submit Form</button>
+                  
+                <button class='frm_btn btn' id="save" type="button" value="Save">Submit Form <i class="material-icons right">send</i></button>
+                <button class='btn btn-danger' id="back" type="button" ">Close<i class="material-icons right">close</i></button>
                 </form>
               </div>
 
