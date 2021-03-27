@@ -12,6 +12,36 @@ exports.teacher = (req, res) => {
     })
 }
 
+
+
+exports.addStudent = (req, res) => {
+
+res.render('partials/addnewStudent', {
+            title: "ADDNEW STUDENT DETAILS",
+        })
+
+}
+
+
+exports.addnewsave =  function (req, res) {
+
+    console.log('req.body :>> ', req.body.name);
+    let student = new db.Students ({
+        name: req.body.name,
+        reg: req.body.reg,
+        semester: req.body.semester,
+        section: req.body.section 
+    });
+
+    student.save().then((result) => 
+    console.log('Student data Saved in Db : ', result)
+    )
+    .catch(err => console.log(err));
+res.end()
+
+}
+
+
 exports.listStudent = (req, res) => {
 
     db.Students.find().then((result) => {

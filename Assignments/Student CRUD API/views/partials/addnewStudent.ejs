@@ -1,0 +1,42 @@
+
+            
+            <div class="row" style="margin-top: 50px;">
+                <form id="addform" class="col s12" name="registration" action="/save" method="post">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input   id="creg" name="reg" minlength="5" type="number"  class="validate regno" required>
+                      <label class="active" id="objid" for="regid">Registration Number</label>
+                    </div>
+
+                      <div class="input-field col s6">
+                        <input  placeholder="Name"  name="name"  minlength="3" type="text"  id="first_name" type="text"  class="validate" required> 
+                        <label class="active" for="name"  >Student Name</label>               
+                    </div>
+                  </div>
+
+                  <div class="row">
+
+                    <div class="input-field col s6">
+                        <input id="section" type="text" value = "" class="validate" maxlength="1" required>
+                        <label class="active"  for="Section">Section</label>
+  
+                      </div>
+
+                    <div class="input-field col s6">
+                      <input id="semester" type="number" value = "" class="validate" maxlength="1" required>
+                      <label class="active" for="semester">Semester</label>
+
+                    </div>
+                  </div>
+                  
+                  <div class="row">
+                  </div>
+                  
+                <button class='frm_btn btn' id="addnew" type="button" value="Save">Submit Form <i class="material-icons right">send</i></button>
+                <button class='btn btn-danger' id="back" type="button" ">Close<i class="material-icons right">close</i></button>
+                </form>
+
+              </div>
+
+
+             

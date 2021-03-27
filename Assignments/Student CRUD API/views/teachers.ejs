@@ -1,12 +1,86 @@
 <!doctype html>
 <html lang="en">
-
 <%- include('./partials/head.ejs') %>
+
+<script type=text/javascript src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
+
 <script type="text/javascript">
   $(document).ready(function () {
 
 
     loadData()
+
+    $('body').on('click', '.addnew', function () {
+      console.log('clicked me')
+      $('#list').hide()
+      $.ajax({
+        url: '/teachers/add',
+        method: 'GET',
+      }).then(function (res) {
+        $('#edit').html(res);
+      })
+    })
+
+    $('body').on('click', '#addnew', function () {
+      // console.log(updated_values
+      var flag = false;
+      var message = []
+      var name = $('#first_name').val();
+      if ($('.regno').val().length <= 3) {
+        message.push('-> Reg No. Should be greater then 3')
+        flag=false;
+      }
+      if ($(name.matches("[A-Z][a-zA-Z]*,\\s[A-Z][a-zA-Z]*"))) {
+        flag = true;
+      } else {
+        message.push('-> Name can not contain symbols and numbers')
+flag=false;
+      }
+
+
+      if (($('#first_name').val() == '' || $('#first_name').val() == null) || ($('.regno').val() == null)) {
+        message.push('-> Field can not be empty')
+flag=false;
+      }
+      if (($('#semester') == '' || $('#semester') == null || $('#semester').empty() == true) || $('#section')
+        .val() == '') {
+        message.push('-> Field can not be empty')
+flag=false;
+      }
+      if ($('.regno').val().length <= 3) {
+        message.push('-> Reg No. Should be greater then 3')
+flag=false;
+      }
+
+
+
+
+      if (flag == true) {
+
+        $.ajax({
+          url: '/teachers/addnewsave',
+          method: 'POST',
+          data: {
+            reg: $('.regno').val(),
+            name: $('#first_name').val(),
+            section: $('#section').val(),
+            semester: $('#semester').val()
+          },
+        }).then(function () {
+          $.ajax({
+            url: '/teachers/list',
+          }).then(function (rest) {
+            $('#list').html(rest)
+            $('#list').show();
+            $('form').html("");
+          })
+        })
+      }
+      else{
+        alert(message)
+      }
+    })
+
 
     $('.title').on('click', function () {
       $('.tab').hide();
@@ -29,12 +103,9 @@
 
         $('#edit').html(res);
       })
-
     })
 
-
     $('body').on('click', '#save', function () {
-
 
       let updated_values = {
         id: $("#objid").attr('objid'),
@@ -43,9 +114,7 @@
         section: $('#section').val(),
         semester: $('#semester').val()
       }
-      // console.log(updated_values)
-
-
+      // console.log(updated_values
       $.ajax({
         url: '/teachers/save',
         method: 'POST',
@@ -56,7 +125,6 @@
           section: $('#section').val(),
           semester: $('#semester').val()
         },
-
       }).then(function () {
         $.ajax({
           url: '/teachers/list',
@@ -65,8 +133,6 @@
           $('#list').show();
           $('form').html("");
         })
-
-
       })
     })
 
@@ -77,14 +143,12 @@
 
     $('body').on('click', '#delete', function () {
       console.log('from the Delete ejs: ', $("#objid").attr('objid'))
-
       $.ajax({
         url: '/teachers/delete',
         method: 'DELETE',
         data: {
           id: $("#objid").attr('objid')
         }
-
       }).then(function () {
         $.ajax({
           url: '/teachers/list',
@@ -93,21 +157,14 @@
           $('#list').show();
           $('form').html("");
         })
-
-
-      })
-
-
-     
-
       })
     })
+  })
 
 
 
 
   function loadData() {
-
     $.ajax({
       url: '/teachers/list',
     }).then(function (rest) {
@@ -122,7 +179,31 @@
 
 <body>
   <header>
-    <%- include( './partials/nav.ejs') %>
+
+
+    <nav>
+      <div class="nav-wrapper deep-purple" style="padding-left:20px;padding-right:20px">
+        <a href="/" class="brand-logo">SMIDESK <%=title %> </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/students">Student</a></li>
+          <li><a href="/teachers">Teacher</a></li>
+          <li><button class="waves-effect waves-light btn addnew">Add new Student</button></li>
+
+
+
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav deep-purple" id="mobile-demo">
+      <li><a style="color: white;" href="/students"> Student</a></li>
+      <li><a style="color: white;" href="/teachers">Teacher</a></li>
+      <li><button class="waves-effect waves-light btn addnew">Add new Student</button></li>
+
+    </ul>
+
+
 
   </header>
   <main>
@@ -148,5 +229,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  $('body').ready(function () {
+
+
+  })
+</script>
 
 </html>
