@@ -1,15 +1,31 @@
 # MERN-Stack-Development
 These are all the projects made by me during the course of WEB Development using MERN Stack. 
 
-# Assignments
-## 1. Portfolio
+# Assignment No. 2
+## Student CRUD API
 
-It is available on the branch `asssignment1`. 
+It is available on the branch `studentsAssignment`. 
 <br>
-Avaliable at: <a href="http://www.syedmustafa.ml/" target="_blank">www.syedmustafa.ml</a>
+Avaliable at: <a href="https://smidesk.herokuapp.com/" target="_blank">www.smidesk.ml</a>
+
+### Technologies Used
+<ul>
+<li>Node</li>
+<li>Express</li>
+<li>MongoDB</li>
+<li>EJS</li>
+<li>jQuery</li>
+<li>AJAX</li>
+<li>CRUD</li>
+</ul>
+
+
+### Description
+<p>This web application is developed using Node, Express, and MongoDB along with this I have used EJS with jQuery and AJAX to enable in-page data loading, so we do not have to reload the page to view the changes made in the database. In which I have made the complete CRUD operations on the student data, by using HTTP verbs. SMI in this application the student can only edit the records, whereas the teacher can add new students, delete students and update students.</p>
+
 <hr>
    
-# Practice Projects
+# Other Practice Projects
 ## 1.  Time Clock
   This project is build using javascript in which it is fetching the `current time`.
   <br>
@@ -21,8 +37,13 @@ Avaliable at: <a href="http://www.syedmustafa.ml/" target="_blank">www.syedmusta
    <br>
    Available at: [www.todo.com](https://syedmustafaimam.github.io/MERN-Stack-Development/portfolio/todo-list/index.html)
 
-# This is the first Assignment 
-In this we have to use tables 
+## 3. Price list
+<p>This web application is developed using Node, Express, and MongoDB. In which I have made the complete CRUD operations, by using HTTP verbs. In this application the users can add new items, delete items and update items.</p>
+<br>
+ Available at: [www.smipricelist.ml](https://pricelist-todo.herokuapp.com/get-items)
 
-# To visit this website use the folloing link
-http://www.syedmustafa.ml/
+
+# This is the first Assignment 
+In this we have to use tables to make our portfolio just using HTML and CSS.  
+<br>
+To visit this website use the folloing link http://www.syedmustafa.ml/
