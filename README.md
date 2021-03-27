@@ -40,6 +40,7 @@ Avaliable at: <a href="https://smidesk.herokuapp.com/" target="_blank">www.smide
 ## 3. Price list
 <p>This web application is developed using Node, Express, and MongoDB. In which I have made the complete CRUD operations, by using HTTP verbs. In this application the users can add new items, delete items and update items.</p>
 <br>
+ 
  Available at: [www.smipricelist.ml](https://pricelist-todo.herokuapp.com/get-items)
 
 
