@@ -23,39 +23,39 @@
 
     $('body').on('click', '#addnew', function () {
       // console.log(updated_values
-      var flag = false;
-      var message = []
-      var name = $('#first_name').val();
-      if ($('.regno').val().length <= 3) {
-        message.push('-> Reg No. Should be greater then 3')
-        flag=false;
-      }
-      if ($(name.matches("[A-Z][a-zA-Z]*,\\s[A-Z][a-zA-Z]*"))) {
-        flag = true;
-      } else {
-        message.push('-> Name can not contain symbols and numbers')
-flag=false;
-      }
+//       var flag = false;
+//       var message = []
+//       var name = $('#first_name').val();
+//       if ($('.regno').val().length <= 3) {
+//         message.push('-> Reg No. Should be greater then 3')
+//         flag=false;
+//       }
+//       if ($(name.matches("[A-Z][a-zA-Z]*,\\s[A-Z][a-zA-Z]*"))) {
+//         flag = true;
+//       } else {
+//         message.push('-> Name can not contain symbols and numbers')
+// flag=false;
+//       }
 
 
-      if (($('#first_name').val() == '' || $('#first_name').val() == null) || ($('.regno').val() == null)) {
-        message.push('-> Field can not be empty')
-flag=false;
-      }
-      if (($('#semester') == '' || $('#semester') == null || $('#semester').empty() == true) || $('#section')
-        .val() == '') {
-        message.push('-> Field can not be empty')
-flag=false;
-      }
-      if ($('.regno').val().length <= 3) {
-        message.push('-> Reg No. Should be greater then 3')
-flag=false;
-      }
+//       if (($('#first_name').val() == '' || $('#first_name').val() == null) || ($('.regno').val() == null)) {
+//         message.push('-> Field can not be empty')
+// flag=false;
+//       }
+//       if (($('#semester') == '' || $('#semester') == null || $('#semester').empty() == true) || $('#section')
+//         .val() == '') {
+//         message.push('-> Field can not be empty')
+// flag=false;
+//       }
+//       if ($('.regno').val().length <= 3) {
+//         message.push('-> Reg No. Should be greater then 3')
+// flag=false;
+//       }
 
 
 
 
-      if (flag == true) {
+      // if (flag == true) {
 
         $.ajax({
           url: '/teachers/addnewsave',
@@ -75,10 +75,10 @@ flag=false;
             $('form').html("");
           })
         })
-      }
-      else{
-        alert(message)
-      }
+      // }
+      // else{
+      //   alert(message)
+      // }
     })
 
 
