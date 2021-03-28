@@ -1,0 +1,18 @@
+# GET url HTTP/1.1
+
+GET http://localhost:3000/rest/xhr-list HTTP/1.1
+
+###
+GET http://localhost:3000/rest/xhr-edit?courseid=1 HTTP/1.1
+
+###
+POST http://localhost:3000/rest/xhr-save HTTP/1.1
+Content-Type: application/json
+
+{
+  "courseid": "1",
+  "code": "CS1105",
+  "title": "Numerical Maths",
+  "crhr": "6",
+  "semester": "10" 
+}

@@ -14,7 +14,7 @@ app.use(loger);
 // adding validation from url string
 let auth = (req, res, next)=>{
     console.log(`log from  Auth`);
-    if(req.query.name == 'Mustafa'){
+    if(req.query.name == 'Mustafa' || req.query.name == 'Elliott'){
         next();
     }
     else{
@@ -29,7 +29,7 @@ app.get('/', (req,res)=>{
 
 app.get('/users', auth ,(req,res)=>{
     console.log(`Name: ${req.query.name}`)
-    res.send(`Users Page ${req.msgs}`)
+    res.send(`${req.query.name} Page`)
 });
 
 app.listen(3000, ()=>{console.log('listing on prot 3000')});

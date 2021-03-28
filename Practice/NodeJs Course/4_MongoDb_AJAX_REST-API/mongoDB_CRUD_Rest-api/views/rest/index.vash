@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta>
+     <title>@model.title</title>
+     <link rel='stylesheet' href='/stylesheets/style.css' />
+     <style>
+          table,
+          th,
+          tr,
+          td {
+               border-collapse: collapse;
+               padding: 10px;
+               border: 1px solid red;
+
+          }
+
+          .col {
+               display: inline-block;
+               width: 45%;
+               vertical-align: top;
+          }
+     </style>
+     <script src="/javascripts/jquery-3.6.0.min.js" type="text/javascript"></script>
+     <script type="text/javascript">
+          $(document).ready(function () {
+
+               // alert('Jquery is working')
+               $.ajax({
+                    url: 'rest/xhr-list'
+               }).then(function (courses) {
+                    // $('#list').html(res);
+                    const markup = `
+                    <table>
+                         <tr>
+                                        <th>Id</th>
+                                        <th>Code</th>
+                                        <th>Title</th>
+                                        <th>Cr. Hr</th>
+                                        <th>Semester</th>
+                                   </tr>
+                    ${courses.map(course => `
+
+                                   
+                                   <tr>
+                                        <td>${course.courseid}</td>
+                                        <td>${course.code}</td>
+                                        <td><a href="#" class='title' courseid="${course.courseid}">${course.title}</a></td>
+                                        <td>${course.crhr}</td>
+                                        <td>${course.semester}</td>
+                                   </tr>
+                                   `).join('')}
+                                   
+                                   </table>
+                              `;
+
+                              $('#list').html(markup);
+                    console.log(courses)
+               })
+
+               $('body').on('click', 'a.title', function () {
+                    //  alert($(this).text()); // for fectching the title
+                    // alert($(this).parent().prev().text()) //fetching the id
+                    // alert($(this).parent().parent().parent().children().eq(0).text()) //fetching the id
+                    let courseid = $(this).attr('courseid')
+
+                    $.ajax({
+                         url: 'rest/xhr-edit',
+                         method: 'GET',
+                         data: {
+                              'courseid': courseid
+                         }
+                    }).then(function (course) {
+                         // $('#edit').html(res);
+                         $('form').show();
+                         $('textarea[name=title]').val(course.title);
+                         $('input[name=courseid]').val(course.courseid);
+                         $('input[name=code]').val(course.code);
+                         $('input[name=crhr]').val(course.crhr);
+                         $('input[name=semester]').val(course.semester);
+
+
+                         console.log(course)
+                    })
+               })
+
+               $('body').on('click', '#save', function () {
+                    let frm = $('form').serialize()
+                    // console.log(frm)
+
+                    $.ajax({
+                         url: 'rest/xhr-save',
+                         method: 'POST',
+                         data: frm
+                    }).then(function (res) {
+                         // $('#edit').html(res);
+                         console.log(res)
+                         if (res.ok == 1) {
+                              let courseid = $('input[name=courseid]').val();
+                              let row = $(`a[courseid=${courseid}]`).parent().parent().children();
+                              
+
+                              $(row).eq(1).text($('input[name=code]').val());
+                              $(row).eq(2).find('a').text($('textarea[name=title]').val());
+                              $(row).eq(3).text($('input[name=crhr]').val());
+                              $(row).eq(4).text($('input[name=semester]').val());
+
+
+                              // $.ajax({
+                              //      url: 'SPA/xhr-list'
+                              // }).then(function (res) {
+                              //      $('#list').html(res);
+                              // })
+
+                              // $('form').html("");
+                         }
+                    })
+
+               })
+
+          })
+     </script>
+
+</head>
+
+
+<body>
+     <h1>@model.title</h1>
+     <p>Welcome to @model.title</p>
+
+     <div id="list" class="col"></div>
+     <div id="edit" class="col">
+
+
+
+          <form action="/xhr-save" method="post" style="display: none;">
+               <table>
+                   <tr>
+                       <th>Course ID : </th>
+                       <td><input type="text" name="courseid"   readonly></td>
+                   </tr>
+                   <tr>
+                       <th>Code : </th>
+                       <td><input type="text" name="code"  ></td>
+                   </tr>
+                   <tr>
+                       <th>Title : </th>
+                       <td>
+                           <textarea name="title"  cols="30" rows="3"></textarea>
+                       </td>
+                   </tr>
+                   <tr>
+                       <th>Cr. Hrs : </th>
+                       <td><input type="text" name="crhr"  ></td>
+                   </tr>
+                   <tr>
+                       <th>Semester : </th>
+                       <td><input type="text" name="semester"  ></td>
+                   </tr>
+                   <tr>
+                       <td colspan="2"><input id="save" type="button" value="Save"></td>    
+                           </tr>
+               </table>
+           </form>
+       
+
+     </div>
+
+     
+
+</body>
+
+
+</html>

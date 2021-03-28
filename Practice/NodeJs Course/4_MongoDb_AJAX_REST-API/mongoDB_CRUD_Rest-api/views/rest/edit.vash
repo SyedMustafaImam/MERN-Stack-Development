@@ -1,0 +1,31 @@
+
+
+    <form action="/xhr-save" method="post">
+        <table>
+            <tr>
+                <th>Course ID : </th>
+                <td><input type="text" name="courseid"  value='@model.course.courseid' readonly></td>
+            </tr>
+            <tr>
+                <th>Code : </th>
+                <td><input type="text" name="code"  value="@model.course.code"></td>
+            </tr>
+            <tr>
+                <th>Title : </th>
+                <td>
+                    <textarea name="title"  cols="30" rows="3">@model.course.title</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>Cr. Hrs : </th>
+                <td><input type="text" name="crhr"  value="@model.course.crhr"></td>
+            </tr>
+            <tr>
+                <th>Semester : </th>
+                <td><input type="text" name="semester"  value="@model.course.semester"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input id="save" type="button" value="Save"></td>    
+                    </tr>
+        </table>
+    </form>
