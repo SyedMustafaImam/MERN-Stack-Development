@@ -12,7 +12,7 @@ Avaliable at: <a href="https://smidesk.herokuapp.com/" target="_blank">www.smide
 <ul>
 <li>Node</li>
 <li>Express</li>
-<li>MongoDB</li>
+<li>MongoDB Cloud</li>
 <li>EJS</li>
 <li>jQuery</li>
 <li>AJAX</li>
