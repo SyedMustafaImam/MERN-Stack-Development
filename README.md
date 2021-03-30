@@ -6,8 +6,6 @@ These are all the projects made by me during the course of WEB Development using
 
 It is available on the branch `studentsAssignment`. 
 <br>
-Avaliable at: <a href="https://smidesk.herokuapp.com/" target="_blank">www.smidesk.ml</a>
-
 ### Technologies Used
 <ul>
 <li>Node</li>
@@ -22,6 +20,9 @@ Avaliable at: <a href="https://smidesk.herokuapp.com/" target="_blank">www.smide
 
 ### Description
 <p>This web application is developed using Node, Express, and MongoDB along with this I have used EJS with jQuery and AJAX to enable in-page data loading, so we do not have to reload the page to view the changes made in the database. In which I have made the complete CRUD operations on the student data, by using HTTP verbs. SMI in this application the student can only edit the records, whereas the teacher can add new students, delete students and update students.</p>
+
+
+Avaliable at: <a href="https://smidesk.herokuapp.com/" target="_blank">www.smidesk.ml</a>
 
 <hr>
    
