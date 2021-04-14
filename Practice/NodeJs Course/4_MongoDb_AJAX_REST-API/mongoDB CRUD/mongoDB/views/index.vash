@@ -23,11 +23,11 @@
             <th>ID</th>
             <th>Title</th>
         </tr>
-        @model.courses.forEach(function(course){
+        @model.courses.forEach(function(mydata){
                 <tr>
-                    <td>@course.courseid</td>
+                    <td>@mydata.courseid</td>
                     <td>
-                        <a href="/Edit/@course.courseid">@course.title</a>
+                        <a href="/Edit/@mydata.courseid">@mydata.title</a>
                     </td>
                 </tr>
             })
