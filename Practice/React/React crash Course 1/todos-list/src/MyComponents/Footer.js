@@ -1,7 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-export default function Footer() {
+export const Footer = () => {
+
+    let footerStyle= {
+        position: "relative",
+        top: "50vh",
+        width:"100%"
+    }
     return (
-<h6>Footer</h6>      
+        <footer class="footer">
+        <div class="container">
+          <span class="text-muted">Place sticky footer content here.</span>
+        </div>
+      </footer>
     )
+
 }
