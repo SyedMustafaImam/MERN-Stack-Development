@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.input {
+  padding: 10px;
+  padding-bottom: 0px;
+  text-align: right;
+  margin: 0 auto;
+  font-size: 20px;
+  color: #020e41;
+  font-weight: bold;
+  width: 250px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #0b0474;
+}
+
+.spacer {
+  padding: 10px;
+}
+
+.numBtn {
+    text-align: center;
+    width:50px;
+    height: 50px;
+    color: #95a7fa;
+    font-size:  18px;
+    font-weight: bold;
+    background-color: #020e41;
+    border: 0;
+    border-radius: 25px;
+    margin: 10px;
+    
+}
+.numBtn:hover{
+    box-shadow: 5px 5px 7px #aaaaaa
+}
+
+.numBtn:active {
+    box-shadow: 5px 5px 10px #aaaaaa;
+    background-color: #03135e;
+    font-size: 15px;
+    width:45px;
+    height: 45px;
+
+}
+
+/* ------ */
+
+.optBtn {
+    text-align: center;
+    width:50px;
+    height: 50px;
+    color: #081655;
+    font-size:  18px;
+    font-weight: bold;
+    background-color: #657ff3;
+    box-shadow: 0px 0px 10px 2px #3f62fc;
+
+    border: 0;
+    border-radius: 25px;
+    margin: 10px;
+    
+}
+.optBtn:hover{
+ 
+    box-shadow: 5px 5px 7px #aaaaaa
+}
+
+.optBtn:active {
+    box-shadow: 5px 5px 10px #aaaaaa;
+    font-size: 15px;
+    width:45px;
+    height: 45px;
+
+}
