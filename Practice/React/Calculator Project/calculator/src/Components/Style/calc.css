@@ -1,19 +1,27 @@
 .App {
   text-align: center;
+  
 }
 
 .input {
   padding: 10px;
+  background-color: #e6f3eb;
   padding-bottom: 0px;
   text-align: right;
   margin: 0 auto;
   font-size: 20px;
   color: #020e41;
   font-weight: bold;
-  width: 250px;
+  width: 278px;
   height: 30px;
-  border-radius: 10px;
+  border-radius: 0px;
   border: 1px solid #0b0474;
+}
+.backGrd {
+
+  background-color: #e6f3eb;
+  width: 297px;
+   margin: 0 auto;
 }
 
 .spacer {
