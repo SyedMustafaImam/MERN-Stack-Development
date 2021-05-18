@@ -1,0 +1,25 @@
+.myBody {
+  background-color: rgb(49, 144, 252);
+}
+
+.formBox {
+  height: 50%;
+  border-radius: 25px;
+  background-color: white;
+  padding: 40px;
+  margin: 0px auto;
+  box-shadow: 10px 15px 15px 1px #2c2b2b60;
+}
+
+.loginBox {
+  /* width: 35%; */
+  border-radius: 25px;
+  background-color: white;
+  padding: 40px;
+  margin: 0px auto;
+  box-shadow: 10px 15px 15px 1px #2c2b2b60;
+}
+
+.NavBar {
+  color: white;
+}
