@@ -20,18 +20,21 @@ exports.admin = (req, res) => {
 exports.member = (req, res) => {
     console.log("Parameter", req.params)
     console.log("we got here")
-    console.log(req.session.user)
+    console.log('Session Username=>', req.session.user.username)
     if (req.session.user) {
-        db.Member.findOne({ userid: req.params.userid }).then(result => {
+        db.Users.findOne({ username: req.session.user.username }).then(result => {
             console.log(result)
             // res.render('member', {
             //     title: "member",
             //     session: result,
             // })
-            return res.status(200).json({ logedin_to: `/index/member/${req.session.user}` })
-        })
+            res.send(`Welcome ${req.session.user.username}`)
+            // return res.status(200).json({ logedin_to: `/index/member/${req.session.user.username}` })
+        }).catch(err => { console.log(`Error in Member DB ==> ${err}`) })
     } else {
-        res.redirect('/')
+        return res.status(200).json({ error: `Not Login please visit /login` })
+
+        // res.redirect('/')
     }
 }
 

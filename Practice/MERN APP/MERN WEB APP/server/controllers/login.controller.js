@@ -6,6 +6,7 @@ var status = ' ';
 exports.login_form = (req, res) => {
     console.log('before if state', status)
     // console.log(req.session.user.username)
+    res.cookie('jwtoken', 'login Page')
     if (status == null) {
         console.log('if status', status)
         res.render('login', { title: "Login", flag: status })
@@ -14,6 +15,8 @@ exports.login_form = (req, res) => {
         console.log('status', status)
         res.render('login', { title: "Login", flag: status })
     }
+
+
     status = ' ';
 }
 
@@ -34,7 +37,13 @@ exports.loginchk = async (req, res) => {
                 // console.log(isMatch)
                 const token = await userLogin.generateAuthToken();
                 console.log(`token => ${token}`)
-                
+
+                // storing token in cookie 
+                res.cookie('jwttoken', token, {
+                    expires: new Date(Date.now() + 250000),
+                    httpOnly: true
+                })
+
                 if (!isMatch) {
                     res.status(400).json({ error: "Invalid Credientials" });
                     console.log('invalid credentials')
