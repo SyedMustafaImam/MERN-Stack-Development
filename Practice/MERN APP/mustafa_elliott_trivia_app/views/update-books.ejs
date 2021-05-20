@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+
+<body style="padding-left: 0px;">
+    <header>
+        <%- include( './partials/nav-admin.ejs') %>
+
+    </header>
+    <main>
+        <!-- <h1><%=title%></h1> -->
+
+        <div class="row">
+
+            <div class="col 2s">
+              <%- include('./partials/dashboard.ejs') %> 
+
+
+                
+                
+
+            </div>
+            <div class="container">
+
+                <center>
+                    <div class="col 10s" style="padding-left: 100px;">
+
+                        <h2 class="center-align">Modify Books</h2>
+                        <hr>
+                        <div class="container" style="border: solid 1px; border-radius: 25px; width: 100%; padding: 50px;">
+
+                            <div class="row">
+                                <form class="col s12" action="/admin/updatebook_post" method="POST">
+                                  <div class="row">
+                                    <div class="input-field col s6">
+                                      <input id="bookid" name="bookid" type="number" value="<%= books.bookid %>"  readonly>
+                                      <label for="bookid">Book Id</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                      <input id="bookname" name="name" type="text" value="<%= books.name %>" class="validate" required>
+                                      <label for="bookname">Book Name</label>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="input-field col s12">
+                                      <input id="author"  name="author" type="text" value="<%= books.author %>" class="validate" required>
+                                      <label for="author">Author</label>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="input-field col s12">
+                                      <input id="year" type="number" name="year" value="<%= books.year %>"class="validate">
+                                      <label for="year">Year</label>
+                                    </div>
+                                  </div>
+                                  <button class="btn waves-effect waves-light" type="submit">Update book
+                                    <i class="material-icons right">update</i>
+                                  </button>
+                                </form>
+                              </div>
+
+                        </div>
+
+                    </div>
+                </center>
+
+            </div>
+
+
+        </div>
+
+    </main>
+    <footer>
+
+        <%- include( './partials/footer.ejs') %>
+
+    </footer>
+
+
+</body>
+
+</html>

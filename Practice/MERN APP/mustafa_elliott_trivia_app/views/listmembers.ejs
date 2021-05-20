@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+
+    <body style="padding-left: 0px;">
+        <header>
+            <%- include( './partials/nav-admin.ejs' ) %>
+
+        </header>
+        <main>
+
+            <div class="row">
+
+                <div class="col 2s">
+                    <%- include('./partials/dashboard.ejs') %>
+
+
+                </div>
+                <div class="col-sm-9">
+
+                    <div style="padding-left: 100px;">
+
+                        <h2 class="center-align">Books List</h2>
+                        <hr>
+                        <div class="container"
+                            style="border: solid 1px; border-radius: 25px; width: 100%; padding: 50px;">
+
+                            <table class='table table-striped table-responsive-md btm-table'>
+                                <thead>
+                                    <tr>
+                                       
+                                        <th>UserID</th>
+                                        <th>Password</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>Address</th>
+                                        <th>City</th>
+                                        <th>Country</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% members.forEach(function(member){ %>
+                                        <tr>
+                                            <td>
+                                                <%= member.userid %>
+                                            </td>
+                                            <td>
+                                                <%= member.password %>
+                                            </td>
+                                            <td>
+                                                <%= member.name %>
+                                            </td>
+                                            <td>
+                                                <%= member.Gender %>
+                                            </td>
+                                            <td>
+                                                <%= member.address %>
+                                            </td>
+                                            <td>
+                                                <%= member.city %>
+                                            </td>
+                                            <td>
+                                                <%= member.country %>
+                                            </td>
+                                            <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <footer>
+
+            <%- include( './partials/footer.ejs' ) %>
+
+        </footer>
+        <!-- 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                alert('ajax is working')
+                $('body').on('click', '#booklist', function () {
+                    $.ajax({
+                        url: "/admin/list-book"
+                    }).then(function (res) {
+                        console.log('we are here')
+                        $('#tableofbook').html(res)
+                        $('#tableofbook').show()
+                        $('#profile').hide()
+                        console.log(res)
+                    })
+                })
+            })
+        </script> -->
+    </body>
+
+</html>

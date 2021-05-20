@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+
+    <body style="padding-left: 0px;">
+        <header>
+            <%- include( './partials/nav-admin.ejs' ) %>
+
+        </header>
+        <main>
+
+            <div class="row">
+
+                <div class="col 2s">
+                    <%- include('./partials/dashboard.ejs') %>
+
+
+                </div>
+                <div class="col-sm-9">
+
+                    <div style="padding-left: 100px;">
+
+                        <h2 class="center-align">Books List</h2>
+                        <hr>
+                        <div class="container"
+                            style="border: solid 1px; border-radius: 25px; width: 100%; padding: 50px;">
+
+                            <table class='table table-striped table-responsive-md btm-table'>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Author</th>
+                                        <th>Year</th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% books.forEach(function(book){ %>
+                                        <tr>
+                                            <td>
+                                                <%= book.bookid %>
+                                            </td>
+                                            <td>
+                                                <%= book.name %>
+                                            </td>
+                                            <td>
+                                                <%= book.author %>
+                                            </td>
+                                            <td>
+                                                <%= book.year %>
+                                            </td>
+                                            <td><a href="/admin/update-book/<%= book._id%>"><button
+                                                        class="btn waves-effect waves-light" type="submit">Update book
+                                                        <i class="material-icons right">update</i>
+                                                    </button></a></td>
+                                            <td>
+                                                <form action="/admin/delete/<%= book._id%>" method="POST"><button class="btn waves-effect waves-light" type="submit">DELETE
+                                                    <i class="material-icons right">DELETE</i>
+                                                </button></form>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <footer>
+
+            <%- include( './partials/footer.ejs' ) %>
+
+        </footer>
+        <!-- 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                alert('ajax is working')
+                $('body').on('click', '#booklist', function () {
+                    $.ajax({
+                        url: "/admin/list-book"
+                    }).then(function (res) {
+                        console.log('we are here')
+                        $('#tableofbook').html(res)
+                        $('#tableofbook').show()
+                        $('#profile').hide()
+                        console.log(res)
+                    })
+                })
+            })
+        </script> -->
+    </body>
+
+</html>

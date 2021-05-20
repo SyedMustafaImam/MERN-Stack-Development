@@ -1,0 +1,40 @@
+    <nav>
+        <div class="nav-wrapper light-blue accent-3" style="padding-left:20px;padding-right:20px">
+            <a  class="brand-logo">LMS <%= title %></a> 
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="/book-search">Book Search</a></li>
+              <li><a href="/fine">Fine</a></li>
+              <li><a href="/return">Return</a></li>
+              <li><a href="/logout">Logout</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+  <ul class="sidenav light-blue accent-3" id="mobile-demo">
+    <li><a href="/book-search">Book Search</a></li>
+    <li><a href="/fine">Fine</a></li>
+    <li><a href="/return">Return</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+
+
+  <script>
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+
+  </script>
+          
+  
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                    

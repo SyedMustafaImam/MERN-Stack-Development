@@ -1,0 +1,33 @@
+.NavBarBrand {
+  color: rgb(221, 220, 220);
+  font-weight: bold;
+  padding-left: 10px;
+  font-size: 22px;
+}
+
+.NavBarOpt {
+  color: rgb(221, 220, 220);
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.NavBarBrand:hover {
+  color: rgb(158, 154, 154);
+  text-decoration: none;
+}
+
+.NavBarOpt:hover {
+  color: rgb(158, 154, 154);
+  text-decoration: none;
+}
+
+.NavBarBrand:active {
+  color: rgb(110, 110, 110);
+  text-decoration: none;
+}
+
+.NavBarOpt:active {
+  color: rgb(110, 110, 110);
+  text-decoration: none;
+}

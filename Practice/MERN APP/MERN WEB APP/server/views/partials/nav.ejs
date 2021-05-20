@@ -1,0 +1,50 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">Edit Profile</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">Change Password</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper light-blue accent-3" style="padding-left:20px;padding-right:20px">
+    <a href="/" class="brand-logo">LMS <%=title %> </a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/index/member/<%= session.userid %>/edit-profile">Edit Profile</a></li>
+      <li><a href="/index/member/<%= session.userid %>/change-password">Change Password</a></li>
+      <li><a href="/fine">Fine</a></li>
+      <li><a href="/return">Return</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav light-blue accent-3" id="mobile-demo">
+  <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i
+        class="material-icons right">arrow_drop_down</i></a></li>
+  <li><a href="/book-search">Book Search</a></li>
+  <li><a href="/edit-profile">Edit Profile</a></li>
+  <li><a href="/change-password">Change Password</a></li>
+  <li><a href="/return">Return</a></li>
+  <li><a href="/logout">Logout</a></li>
+
+</ul>
+
+
+<script>
+  $(document).ready(function () {
+    $('.sidenav').sidenav();
+    $(".dropdown-trigger").dropdown();
+
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+</script>
+
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
