@@ -24,10 +24,11 @@ exports.member = (req, res) => {
     if (req.session.user) {
         db.Member.findOne({ userid: req.params.userid }).then(result => {
             console.log(result)
-            res.render('member', {
-                title: "member",
-                session: result,
-            })
+            // res.render('member', {
+            //     title: "member",
+            //     session: result,
+            // })
+            return res.status(200).json({ logedin_to: `/index/member/${req.session.user}` })
         })
     } else {
         res.redirect('/')
