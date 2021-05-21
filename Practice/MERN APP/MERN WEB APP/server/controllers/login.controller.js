@@ -45,13 +45,14 @@ exports.loginchk = async (req, res) => {
                 })
 
                 if (!isMatch) {
-                    res.status(400).json({ error: "Invalid Credientials" });
                     console.log('invalid credentials')
+                    return res.status(400).json({ error: "Invalid Credientials" });
+
                 } else {
-                    // If Every this matched
+                    // If Every thing is ture then this method
 
                     req.session.user = userLogin;
-                    console.log("Session", req.session.user)
+                    console.log(`/index/member/${req.session.user.username}`)
                     // res.redirect('index/member/' + req.session.user.username)
                     return res.status(200).json({ logedin_to: `/index/member/${req.session.user.username}` })
 
@@ -60,8 +61,8 @@ exports.loginchk = async (req, res) => {
                 }
 
             } else {
-                res.status(400).json({ error: "Invalid Credientials" });
                 console.log('invalid credentials')
+                return res.status(400).json({ error: "Invalid Credientials" });
             }
 
 

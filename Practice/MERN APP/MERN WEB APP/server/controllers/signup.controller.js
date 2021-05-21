@@ -1,14 +1,14 @@
 const db = require('../models/index')
-var trigger;
-exports.register_form = (req, res) => {
-    trigger = true;
-    res.render('signup', { title: "signupform", state: trigger })
-}
 
 
 exports.register = (req, res) => {
+    // console.log('Request Made')
+    // console.log('Data from Front end')
+    // console.log('-------------------')
+    // console.log(req.body)
     let { firstName, lastName, username, country, email, password, gender } = req.body;
     if (!firstName || !lastName || !username || !country || !email || !password || !gender) {
+        console.log('Incomplete Data from front end')
         res.status(422).json({ error: "All feilds not filled" })
     } else {
         db.Users.findOne({ username: req.body.username, email: email }, (err, exists) => {
@@ -28,8 +28,8 @@ exports.register = (req, res) => {
                     password,
                     gender
                 })
- 
- 
+
+
                 reg.save().then(result => {
                     // res.status(201).json({ message: "User registerd Successfully" })
                     console.log("saved to Mongo>>", result)

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import Axios from 'axios';
 import { Form, Button, Row, Col, h1 } from 'react-bootstrap'
 import '../Form.css'
-
 
 class UserForm extends Component {
 
 
+    api = Axios.create({
+        baseURL: 'http://192.168.10.39:5000/',
+        timeout: 2000
+    })
 
     btnDisabled = () => (
         <Button variant="primary" type="submit" disabled>
@@ -29,6 +33,20 @@ class UserForm extends Component {
         gender: ''
 
     };
+    handleSubmit = e => {
+        e.preventDefault();
+    }
+    submitData = () => {
+
+        this.api.post('register', this.state).then(result => {
+
+            console.log(`Result on Post => ${result}`)
+            console.log(`Result on Post => ${result.data}`)
+        }).catch(err => console.log(err))
+
+
+    }
+
     handleChange = (e) => {
         // console.log(e.target.name, e.target.value);
         const { name, value } = e.target;
@@ -45,7 +63,7 @@ class UserForm extends Component {
 
         return (
             <div className="container" >
-                <Form className=" formBox">
+                <Form className=" formBox" onSubmit={this.handleSubmit}>
                     <h1><b>Sign Up</b></h1>
                     <p>It's quick and easy.</p>
                     <hr></hr>
@@ -65,9 +83,9 @@ class UserForm extends Component {
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Group controlId="formUserId">
+                            <Form.Group controlId="formusername">
                                 <Form.Label>User ID</Form.Label>
-                                <Form.Control type="text" name="userid" value={this.state.userid} onChange={this.handleChange} placeholder="Enter your userid" />
+                                <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="Enter your username" />
                             </Form.Group>
                         </Col>
                         <Col>
@@ -124,7 +142,7 @@ class UserForm extends Component {
                         <Form.Check type="radio" name="gender" onChange={this.handleChange} value="Others" label="Others" /> */}
 
                     {/* {this.state.policies === 'on' ? this.btnDisabled : this.btnOn} */}
-                    <Button variant="success" type="submit" >
+                    <Button variant="success" onClick={this.submitData} >
                         Sign Up
                     </Button>
                 </Form>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Form, Button, Row, Col, h1 } from 'react-bootstrap'
+import { Form, Button, Row, Col, Image, Alert } from 'react-bootstrap'
 import '../Form.css'
+import axios from 'axios'
 import loginImage from '../login.png'
 import { NavLink } from "react-router-dom";
 
@@ -8,10 +9,14 @@ import { NavLink } from "react-router-dom";
 
 class LoginForm extends Component {
 
+    api = axios.create({
+        baseURL: 'http://192.168.10.39:5000/',
+        timeout: 2000
+    })
 
     state = {
 
-        userid: '',
+        username: '',
         password: '',
 
 
@@ -26,7 +31,22 @@ class LoginForm extends Component {
 
     }
 
-    signUp = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
+    checkLogin = () => {
+        this.api.post('login', this.state).then(result => {
+            console.log('data posted to server')
+            console.log('status :', result.statusText);
+            console.log('status Code:', result.status);
+            if (result.status === 200) {
+                return <Alert variant={"success"}> Successfully Loged in </Alert>
+            } else {
+                return <Alert variant={"danger"}> Invalid Credentials </Alert>
+
+            }
+        }).catch(err => console.log(err))
 
     }
 
@@ -34,10 +54,10 @@ class LoginForm extends Component {
 
 
         return (
-            <div className="container" >
+            <div id="logCont" className="container" onSubmit={this.handleSubmit}>
                 <Row className=" loginBox">
-                    <Col style={{ "padding-left": "5%", "margin-right": "10%" }}>
-                        <img src={loginImage} style={{ "width": "100%" }} />
+                    <Col xs={12} md={6} style={{ "padding-left": "5%", "margin-right": "10%" }} >
+                        <Image src={loginImage} fluid />
                     </Col>
                     <Col >
                         <Form style={{ "width": "60%", "margin-left": "10%" }}>
@@ -45,9 +65,9 @@ class LoginForm extends Component {
                             <hr></hr>
 
 
-                            <Form.Group controlId="formUserId">
+                            <Form.Group controlId="formusername">
                                 <Form.Label>User ID</Form.Label>
-                                <Form.Control type="text" name="userid" value={this.state.userid} onChange={this.handleChange} placeholder="Userid or Email address" />
+                                <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="username or Email address" />
                             </Form.Group>
 
 
@@ -60,7 +80,7 @@ class LoginForm extends Component {
 
                             <Row >
                                 <Col xs={5}>
-                                    <Button variant="success" type="submit" >
+                                    <Button onClick={this.checkLogin} variant="success" type="submit" >
                                         Login
                                     </Button>
                                 </Col>
