@@ -67,10 +67,11 @@ class UserForm extends Component {
                 email: '',
                 password: '',
                 conf_pass: '',
+                stylePass: '',
                 policies: '',
                 gender: '',
-                passmath: '',
                 passstats: false,
+                formIsFilled: false,
                 validated: false,
                 getUserfromServer: '',
                 isUsernameSame: false,
@@ -82,10 +83,8 @@ class UserForm extends Component {
     }
     confirmPassword = (e) => {
 
-
         this.setState({ conf_pass: e.target.value })
         const confPass = e.target.value
-        const passField = e.currentTarget;
         if (this.state.password === "" || confPass === "") {
             this.setState({ passmath: "" })
 
@@ -107,6 +106,8 @@ class UserForm extends Component {
         }
     }
     getUserName = () => {
+        this.api.post('checkUser', this.state.username)
+        
         this.api.get('checkUser').then(result => {
             console.log(result)
             this.setState({ getUserfromServer: result.data })
@@ -137,8 +138,11 @@ class UserForm extends Component {
         });
         if (this.state.getUserfromServer === username) {
             this.setState({ isUsernameSame: true })
+            this.setState({ usernameError: "User name alread exist!" })
+
 
         } else {
+            this.setState({ usernameError: "" })
             this.setState({ isUsernameSame: false })
 
         }
@@ -184,9 +188,9 @@ class UserForm extends Component {
                                         <Form.Control style={{ "font-size": "10px" }} type="text" name="username" value={this.state.username} onChange={this.handleChangeUserName} required placeholder="Enter username" />
                                     </InputGroup.Prepend>
                                     <Form.Text style={this.state.isUsernameSame !== false ? { "font-size": "9px", "color": "red" } : { "font-size": "9px", "color": "green" }}>
-                                    {this.state.passmath}
+                                        {this.state.usernameError}
 
-                                </Form.Text>
+                                    </Form.Text>
                                 </Form.Group>
                             </InputGroup>
                         </Col>
