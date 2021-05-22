@@ -107,7 +107,9 @@ class UserForm extends Component {
     }
     getUserName = () => {
 
-        this.api.get('checkUser').then(result => {
+        this.api.get('checkUser', {
+            param: {username:this.state.username}
+        }).then(result => {
             console.log('Result From Server in front end/------')
             console.log(result)
             this.setState({ getUserfromServer: result.data })
@@ -133,14 +135,27 @@ class UserForm extends Component {
     }
 
     handleChangeUserName = (e) => {
+        this.handleChange(e);
+        
         const { name, value } = e.target;
         const username = e.target.value;
         this.setState({
             [name]: value
         });
-        this.api.post('checkUser', { username: this.state.username }).then(result => console.log(result)).catch(err => console.log(err))
+        console.log(username)
+        // this.api.post('checkUser', { username: username}).then(result => console.log(result)).catch(err => console.log(err))
+        this.api.get(`checkUser/`,{params:{
+            username:username
+        }}).then(result => {
+            console.log('Result From Server in front end/------')
+            console.log(result)
+            this.setState({ getUserfromServer: result.data })
+        }).catch(err => {
+            console.log('throwing error')
+            console.log(err)
+        })
 
-        this.getUserName();
+        
         if (this.state.getUserfromServer === username) {
             this.setState({ isUsernameSame: true })
             this.setState({ usernameError: "User name alread exist!" })

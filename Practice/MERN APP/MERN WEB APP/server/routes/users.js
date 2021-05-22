@@ -4,7 +4,7 @@ const login_controller = require('../controllers/login.controller')
 const signup_controller = require('../controllers/signup.controller')
 // router.get('/signup', signup_controller.register_form)
 router.post('/register', signup_controller.register)
-router.post('/checkUser', signup_controller.checkUser)
+router.get('/checkUser', signup_controller.checkUser)
 
 // router.get('/', login_controller.login_form)
 router.post('/login', login_controller.loginchk)
