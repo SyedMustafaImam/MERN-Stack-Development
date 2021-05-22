@@ -8,7 +8,7 @@ class UserForm extends Component {
 
 
     api = Axios.create({
-        baseURL: 'http://192.168.10.39:5000/',
+        baseURL: 'http://localhost:5000/',
         timeout: 2000
     })
 
@@ -106,8 +106,7 @@ class UserForm extends Component {
         }
     }
     getUserName = () => {
-        this.api.post('checkUser', this.state.username)
-        
+
         this.api.get('checkUser').then(result => {
             console.log(result)
             this.setState({ getUserfromServer: result.data })
@@ -130,12 +129,14 @@ class UserForm extends Component {
     }
 
     handleChangeUserName = (e) => {
-        this.getUserName();
         const { name, value } = e.target;
         const username = e.target.value;
         this.setState({
             [name]: value
         });
+        this.api.post('checkUser', {username:this.state.username})
+
+        this.getUserName();
         if (this.state.getUserfromServer === username) {
             this.setState({ isUsernameSame: true })
             this.setState({ usernameError: "User name alread exist!" })

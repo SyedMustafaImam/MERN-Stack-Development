@@ -2,13 +2,17 @@ const db = require('../models/index')
 
 
 exports.checkUser = (req, res) => {
+    
     const { username } = req.body;
     console.log('Request Made For Check User')
-    console.log('Data to be sent')
+    console.log('Data Recived')
     console.log('-------------------')
+    console.log(req.body)
 
     db.Users.findOne({ username: username }).then(result => {
         res.send(result)
+        console.log('Data to be sent')
+
         console.log(req.body)
 
     }).catch(err => { res.send(err) })
