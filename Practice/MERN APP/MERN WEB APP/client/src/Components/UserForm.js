@@ -108,8 +108,12 @@ class UserForm extends Component {
     getUserName = () => {
 
         this.api.get('checkUser').then(result => {
+            console.log('Result From Server in front end/------')
             console.log(result)
             this.setState({ getUserfromServer: result.data })
+        }).catch(err => {
+            console.log('throwing error')
+            console.log(err)
         })
     }
 
@@ -134,7 +138,7 @@ class UserForm extends Component {
         this.setState({
             [name]: value
         });
-        this.api.post('checkUser', {username:this.state.username})
+        this.api.post('checkUser', { username: this.state.username }).then(result => console.log(result)).catch(err => console.log(err))
 
         this.getUserName();
         if (this.state.getUserfromServer === username) {
