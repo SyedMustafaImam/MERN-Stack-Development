@@ -1,11 +1,11 @@
 const db = require('../models/index')
 
 
-exports.checkUser = (req,res)=>{
-    const {username}= req.body;
-    db.Users.findOne({username: username}).then(result=>{
+exports.checkUser = (req, res) => {
+    const { username } = req.body;
+    db.Users.findOne({ username: username }).then(result => {
         res.send(result)
-    })
+    }).catch(err => { res.send(err) })
 }
 
 exports.register = (req, res) => {

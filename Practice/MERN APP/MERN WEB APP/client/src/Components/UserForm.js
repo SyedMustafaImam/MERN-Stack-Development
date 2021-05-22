@@ -35,7 +35,10 @@ class UserForm extends Component {
         gender: '',
         passstats: false,
         formIsFilled: false,
-        validated: false
+        validated: false,
+        getUserfromServer: '',
+        isUsernameSame: false,
+
 
     };
     handleSubmit = (e) => {
@@ -68,7 +71,9 @@ class UserForm extends Component {
                 gender: '',
                 passmath: '',
                 passstats: false,
-                validated: false
+                validated: false,
+                getUserfromServer: '',
+                isUsernameSame: false,
 
             })
         }).catch(err => console.log(err))
@@ -102,7 +107,10 @@ class UserForm extends Component {
         }
     }
     getUserName = () => {
-        this.api.get('')
+        this.api.get('checkUser').then(result => {
+            console.log(result)
+            this.setState({ getUserfromServer: result.data })
+        })
     }
 
     handleChange = (e) => {
@@ -117,9 +125,25 @@ class UserForm extends Component {
             this.setState({ formIsFilled: false })
 
         }
+
     }
 
+    handleChangeUserName = (e) => {
+        this.getUserName();
+        const { name, value } = e.target;
+        const username = e.target.value;
+        this.setState({
+            [name]: value
+        });
+        if (this.state.getUserfromServer === username) {
+            this.setState({ isUsernameSame: true })
 
+        } else {
+            this.setState({ isUsernameSame: false })
+
+        }
+
+    }
 
 
 
@@ -157,8 +181,12 @@ class UserForm extends Component {
                                 <Form.Group controlId="formusername">
                                     <InputGroup.Prepend>
                                         <InputGroup.Text style={{ "height": "29px" }} id="inputGroupPrepend">@</InputGroup.Text>
-                                        <Form.Control style={{ "font-size": "10px" }} type="text" name="username" value={this.state.username} onChange={this.handleChange} required placeholder="Enter username" />
+                                        <Form.Control style={{ "font-size": "10px" }} type="text" name="username" value={this.state.username} onChange={this.handleChangeUserName} required placeholder="Enter username" />
                                     </InputGroup.Prepend>
+                                    <Form.Text style={this.state.isUsernameSame !== false ? { "font-size": "9px", "color": "red" } : { "font-size": "9px", "color": "green" }}>
+                                    {this.state.passmath}
+
+                                </Form.Text>
                                 </Form.Group>
                             </InputGroup>
                         </Col>
