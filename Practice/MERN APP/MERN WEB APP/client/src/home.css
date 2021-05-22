@@ -1,0 +1,37 @@
+body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.homeHeader {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden !important;
+  background-image: linear-gradient(
+    to right,
+    #48cafd,
+    #41aff4,
+    #398eea,
+    #3066de,
+    #3949d5
+  );
+  height: 100%;
+  vertical-align: middle;
+  padding: 120px 0px;
+}
+
+.heading {
+  font-size: 58px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: azure;
+}
+
+.para {
+  font-size: 32px;
+  font-stretch: 400;
+  text-align: center;
+  color: rgb(231, 231, 231);
+}

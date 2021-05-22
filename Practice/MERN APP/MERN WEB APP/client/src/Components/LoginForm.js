@@ -54,7 +54,9 @@ class LoginForm extends Component {
 
 
         return (
-            <div id="logCont" className="container" onSubmit={this.handleSubmit}>
+
+            <div id="logCont" className="container mainDiv" onSubmit={this.handleSubmit}>
+
                 <Row className=" loginBox">
                     <Col xs={12} md={6} style={{ "padding-left": "5%", "margin-right": "10%" }} >
                         <Image src={loginImage} fluid />

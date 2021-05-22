@@ -1,6 +1,13 @@
 const db = require('../models/index')
 
 
+exports.checkUser = (req,res)=>{
+    const {username}= req.body;
+    db.Users.findOne({username: username}).then(result=>{
+        res.send(result)
+    })
+}
+
 exports.register = (req, res) => {
     // console.log('Request Made')
     // console.log('Data from Front end')

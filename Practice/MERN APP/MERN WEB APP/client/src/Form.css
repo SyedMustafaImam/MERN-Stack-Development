@@ -2,10 +2,12 @@
   background-color: rgb(49, 144, 252);
 }
 
-#logCont {
+.mainDiv {
+  margin-top: 50px;
 }
 
 .formBox {
+  font-size: 12px;
   height: 50%;
   border-radius: 25px;
   background-color: white;
