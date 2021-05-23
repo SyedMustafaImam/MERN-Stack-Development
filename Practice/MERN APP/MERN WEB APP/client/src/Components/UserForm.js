@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Form, Button, Row, Col, InputGroup } from 'react-bootstrap'
 import '../Form.css'
 import PasswordStrengthBar from 'react-password-strength-bar';
+import { NavLink } from "react-router-dom";
 
 class UserForm extends Component {
 
@@ -285,12 +286,13 @@ class UserForm extends Component {
 
                     {/* {this.state.policies === 'on' ? this.btnDisabled : this.btnOn} */}
 
+                    <NavLink to="/LoginForm"> 
                     <Button variant="success" type="submit" onClick={this.submitData} disabled={this.state.formIsFilled === true && this.state.passstats === true ? false : true}>
-                        Sign Up
-                    </Button>
+                       Sign Up 
+                    </Button></NavLink>
                 </Form>
-                <br></br>
-                <prev>{JSON.stringify(this.state, null, 2)}</prev>
+                {/* <br></br>
+                <prev>{JSON.stringify(this.state, null, 2)}</prev> */}
             </div >
         )
     }
