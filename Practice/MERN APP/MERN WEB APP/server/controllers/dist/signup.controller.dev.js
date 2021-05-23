@@ -7,7 +7,9 @@ exports.checkUser = function (req, res) {
   console.log('Request Made For Check User');
   console.log('Data Recived');
   console.log('-------------------');
-  console.log(req.params);
+  console.log(req.params.username);
+  console.log(req.body);
+  console.log('username :>> ', username);
   db.Users.findOne({
     username: username
   }).then(function (result) {

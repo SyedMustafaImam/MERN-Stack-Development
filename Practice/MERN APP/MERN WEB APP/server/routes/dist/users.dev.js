@@ -10,7 +10,7 @@ var signup_controller = require('../controllers/signup.controller'); // router.g
 
 
 router.post('/register', signup_controller.register);
-router.get('/checkUser', signup_controller.checkUser); // router.get('/', login_controller.login_form)
+router.get('/checkUser/:username', signup_controller.checkUser); // router.get('/', login_controller.login_form)
 
 router.post('/login', login_controller.loginchk);
 router.get('/index/member/:username/edit-profile', login_controller.edit_profile);

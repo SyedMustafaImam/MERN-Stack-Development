@@ -144,28 +144,28 @@ class UserForm extends Component {
         });
         console.log(username)
         // this.api.post('checkUser', { username: username}).then(result => console.log(result)).catch(err => console.log(err))
-        this.api.get(`checkUser/`,{params:{
-            username:username
-        }}).then(result => {
+        this.api.get(`checkUser/${username}`).then(result => {
             console.log('Result From Server in front end/------')
             console.log(result)
-            this.setState({ getUserfromServer: result.data })
+            this.setState({ getUserfromServer: result.data.username })
+        
+            if (this.state.getUserfromServer === this.state.username) {
+                this.setState({ isUsernameSame: true })
+                this.setState({ usernameError: "User name alread exist!" })
+    
+    
+            } else {
+                this.setState({ usernameError: "" })
+                this.setState({ isUsernameSame: false })
+    
+            }
+       
         }).catch(err => {
             console.log('throwing error')
             console.log(err)
         })
 
-        
-        if (this.state.getUserfromServer === username) {
-            this.setState({ isUsernameSame: true })
-            this.setState({ usernameError: "User name alread exist!" })
-
-
-        } else {
-            this.setState({ usernameError: "" })
-            this.setState({ isUsernameSame: false })
-
-        }
+       
 
     }
 
